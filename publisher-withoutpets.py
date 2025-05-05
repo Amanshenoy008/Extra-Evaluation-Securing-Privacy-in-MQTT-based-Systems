@@ -7,6 +7,7 @@ BROKER = "localhost"
 PORT = 1883
 TOPIC = "disaster/alerts"
 
+# victim message contents
 messages = [
     {"user_id": "victim_01", "location": "37.7749,-122.4194", "message": "Stuck on rooftop!","device_id": "Samsung",},
     {"user_id": "victim_02", "location": "37.8044,-122.2711", "message": "Need medical help!","device_id": "Iphone",},
@@ -16,12 +17,12 @@ messages = [
 def on_connect(client, userdata, flags, rc):
     print(f"[INFO] Connected with result code {rc}")
 
-client = mqtt.Client()
+client = mqtt.Client()        # create client to send message
 client.on_connect = on_connect
 client.connect(BROKER, PORT, 60)
 client.loop_start()
 
-try:
+try:                 # the publisher continues sending messages 
     while True:
         msg = random.choice(messages)
         payload = json.dumps(msg)

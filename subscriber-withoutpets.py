@@ -1,6 +1,7 @@
 import paho.mqtt.client as mqtt
 import json
 
+# MQTT Secure Broker Config
 BROKER = "localhost"
 PORT = 1883
 TOPIC = "disaster/alerts"

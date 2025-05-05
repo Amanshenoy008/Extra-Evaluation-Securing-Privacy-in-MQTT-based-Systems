@@ -3,7 +3,7 @@ import time
 import json
 import hashlib
 import random
-import base64
+#import base64
 from cryptography.fernet import Fernet
 
 # MQTT Secure Broker Config
@@ -11,8 +11,8 @@ BROKER = "localhost"
 PORT = 8883  # TLS port
 BASE_TOPIC = "disaster/alerts"
 
-#  hardcoded shared encryption key (shared with subscriber)
-key = b'cSiH_xCt6sWto35WALxo696uZlG0dXEijl53o9bvYU4='
+#  for sake of demo the key is hardcoded and shared encryption key to subscriber
+key = b'cSiH_xCt6sWto35WALxo696uZlG0dXEijl53o9bvYU4='   
 cipher = Fernet(key)
 
 print(f"[KEY] Shared encryption key: {key.decode()}")  
@@ -47,8 +47,8 @@ def on_connect(client, userdata, flags, rc):
 # Create client and configure TLS
 client = mqtt.Client()
 client.on_connect = on_connect
-#client.tls_set()
-client.connect(BROKER, 1883, 60)
+#client.tls_set()             The tls implemmentation requires certificates, hence the comment
+client.connect(BROKER, 1883, 60)  # The tls port is 8883 but for demo sake I used 1883
 client.loop_start()
 
 TOPIC = obfuscate_topic(BASE_TOPIC)

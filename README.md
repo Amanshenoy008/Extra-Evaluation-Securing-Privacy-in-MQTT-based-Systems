@@ -9,6 +9,10 @@ To simulate MQTT communication between the victims, drones (brokers), and the C2
 - Virtual Environment (`venv`) for dependency isolation
 - LINDDUN privacy threat modeling framework
 
+## PPT
+ 
+ - The ppt is at ./ppt/
+
 ## 📦 Installation Instructions
 ### 1. Clone the Repository
 
@@ -37,30 +41,57 @@ cd Extra-Evaluation-Securing-Privacy-in-MQTT-based-Systems
 ```bash
     pip install paho-mqtt
 ```
-### 5. Start the publisher and subscriber python file
+### 5. Start the publisher and subscriber python file (without Privacy enhancing techniques)
+
+```bash
+    python publisher-withoutpets.py
+
+    python subscriber-withoutpets.py
+```
+
+### 6. Start the publisher and subscriber python file (with Privacy enhancing techniques)
 
 ```bash
     python publisher.py
 
     python subscriber.py
 ```
-### The Output 
+
+
+### The Output (before implemeting Privacy enhancing techniques)
 
 ## 
-- from publisher terminal
+- from publisher-withoutpets.py terminal
 ```bash
-    [INFO] Connected with result code 0
+[INFO] Connected with result code 0
 [PUBLISH] Sent: {"user_id": "victim_01", "location": "37.7749,-122.4194", "message": "Stuck on rooftop!"}
 [PUBLISH] Sent: {"user_id": "victim_03", "location": "37.7600,-122.4477", "message": "Water level rising fast!"}
 
 ```
-- from subscriber terminal
+- from subscribe-withoutpets.py terminal
 ```bash
 [INFO] Connected with result code 0
 [INFO] Subscribed to topic: disaster/alerts
 [RECEIVED] Topic: disaster/alerts | Payload: {'user_id': 'victim_01', 'location': '37.7749,-122.4194', 'message': 'Stuck on rooftop!'}
 [RECEIVED] Topic: disaster/alerts | Payload: {'user_id': 'victim_03', 'location': '37.7600,-122.4477', 'message': 'Water level rising fast!'}
 ```
+
+### The Output (after implemeting Privacy enhancing techniques)
+
+## 
+- from publisher terminal
+```bash
+[INFO] Connected with result code 0
+[PUBLISH] Sent encrypted to topic 94843eb579da505404f2be769514bd248e7af375109a731f9847bb9d3d9bebb1
+[PUBLISH] Sent encrypted to topic 94843eb579da505404f2be769514bd248e7af375109a731f9847bb9d3d9bebb1
+```
+- from subscriber terminal
+```bash
+[INFO] Subscribed to topic: 94843eb579da505404f2be769514bd248e7af375109a731f9847bb9d3d9bebb1
+[RECEIVED] {'id': '699c75e28dc185603983f87893eb0126a398f88dc7c15cd04aa11c443910429d', 'loc': '37.7749,-122.4194', 'msg': 'Stuck on rooftop!'}
+[RECEIVED] {'id': '699c75e28dc185603983f87893eb0126a398f88dc7c15cd04aa11c443910429d', 'loc': '37.7749,-122.4194', 'msg': 'Stuck on rooftop!'}
+```
+
 
 ## 🔍 Privacy Threat Analysis (LINDDUN)
 
@@ -109,7 +140,7 @@ The following threats were identified in the base MQTT setup without any privacy
 ### After
 
 ```bash
-<encrypted_payload>
+<Sent encrypted to topic 94843eb579da505404f2be769514bd248e7af375109a731f9847bb9d3d9bebb1>
 ```
 
 ## ⚙️ Effectiveness and Trade-Offs
