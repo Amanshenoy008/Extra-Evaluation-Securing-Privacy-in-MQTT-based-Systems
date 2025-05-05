@@ -11,13 +11,13 @@ BROKER = "localhost"
 PORT = 8883  # TLS port
 BASE_TOPIC = "disaster/alerts"
 
-# Generate or hardcode shared encryption key (share with subscriber)
+#  hardcoded shared encryption key (shared with subscriber)
 key = b'cSiH_xCt6sWto35WALxo696uZlG0dXEijl53o9bvYU4='
 cipher = Fernet(key)
 
 print(f"[KEY] Shared encryption key: {key.decode()}")  # Copy this to subscriber.py
 
-# Simulated message data
+#  message data
 raw_messages = [
     {"user_id": "victim_01", "location": "37.7749,-122.4194", "message": "Stuck on rooftop!"},
     {"user_id": "victim_02", "location": "37.8044,-122.2711", "message": "Need medical help!"},

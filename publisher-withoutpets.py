@@ -8,9 +8,9 @@ PORT = 1883
 TOPIC = "disaster/alerts"
 
 messages = [
-    {"user_id": "victim_01", "location": "37.7749,-122.4194", "message": "Stuck on rooftop!"},
-    {"user_id": "victim_02", "location": "37.8044,-122.2711", "message": "Need medical help!"},
-    {"user_id": "victim_03", "location": "37.7600,-122.4477", "message": "Water level rising fast!"},
+    {"user_id": "victim_01", "location": "37.7749,-122.4194", "message": "Stuck on rooftop!","device_id": "Samsung",},
+    {"user_id": "victim_02", "location": "37.8044,-122.2711", "message": "Need medical help!","device_id": "Iphone",},
+    {"user_id": "victim_03", "location": "37.7600,-122.4477", "message": "Water level rising fast!","device_id": "Micromax",},
 ]
 
 def on_connect(client, userdata, flags, rc):
