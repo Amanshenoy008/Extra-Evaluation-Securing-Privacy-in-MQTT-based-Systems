@@ -14,17 +14,14 @@ def obfuscate_topic(topic):
 
 TOPIC = obfuscate_topic(BASE_TOPIC)
 
-# Paste the encryption key printed by publisher here
 key = b'cSiH_xCt6sWto35WALxo696uZlG0dXEijl53o9bvYU4='
 cipher = Fernet(key)
 
-# MQTT connect callback
 def on_connect(client, userdata, flags, rc):
     print(f"[INFO] Connected with result code {rc}")
     client.subscribe(TOPIC)
     print(f"[INFO] Subscribed to topic: {TOPIC}")
 
-# MQTT message callback
 def on_message(client, userdata, msg):
     try:
         decrypted = cipher.decrypt(msg.payload)
@@ -33,7 +30,6 @@ def on_message(client, userdata, msg):
     except Exception as e:
         print(f"[ERROR] Decryption failed: {e}")
 
-# Setup client
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message

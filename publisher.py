@@ -15,7 +15,7 @@ BASE_TOPIC = "disaster/alerts"
 key = b'cSiH_xCt6sWto35WALxo696uZlG0dXEijl53o9bvYU4='
 cipher = Fernet(key)
 
-print(f"[KEY] Shared encryption key: {key.decode()}")  # Copy this to subscriber.py
+print(f"[KEY] Shared encryption key: {key.decode()}")  
 
 #  message data
 raw_messages = [
