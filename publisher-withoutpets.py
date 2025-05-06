@@ -3,9 +3,7 @@ import time
 import json
 import random
 
-BROKER = "localhost"
-PORT = 1883
-TOPIC = "disaster/alerts"
+
 
 # victim message contents
 messages = [
@@ -13,6 +11,10 @@ messages = [
     {"user_id": "victim_02", "location": "37.8044,-122.2711", "message": "Need medical help!","device_id": "Iphone",},
     {"user_id": "victim_03", "location": "37.7600,-122.4477", "message": "Water level rising fast!","device_id": "Micromax",},
 ]
+
+BROKER = "localhost"
+PORT = 1883
+TOPIC = "disaster/alerts"
 
 def on_connect(client, userdata, flags, rc):
     print(f"[INFO] Connected with result code {rc}")

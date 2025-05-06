@@ -9,9 +9,10 @@ To simulate MQTT communication between the victims, drones (brokers), and the C2
 - Virtual Environment (`venv`) for dependency isolation
 - LINDDUN privacy threat modeling framework
 
-## PPT
+## PPT & Youtube Video
  
  - The ppt is at ./ppt/
+ - The link to Youtube video : https://youtu.be/dzhatPvz1uo
 
 ## 📦 Installation Instructions
 ### 1. Clone the Repository
@@ -40,6 +41,8 @@ cd Extra-Evaluation-Securing-Privacy-in-MQTT-based-Systems
 
 ```bash
     pip install paho-mqtt
+
+    pip install cryptography
 ```
 ### 5. Start the publisher and subscriber python file (without Privacy enhancing techniques)
 
